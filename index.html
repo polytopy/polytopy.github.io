@@ -1,60 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>Polytopy</title>
-        <meta name="author" content="Polytopy">
-        <meta name="description" content="Polytopy Ltd. provides software consultancy services, we specialise in developing high performance applications for computer vision or machine learning tasks.">
-        <meta name="keywords"  content="Software,Engineer,Developer,Programmer,Maker,Computer Vision,SLAM,Modal,Consultant,">
-        <meta name="language" content="English">
-        <meta name="resource-type" content="Document">
-        <meta name="theme-color" content="#FFFFFF">
+<head>
+    <meta charset="utf-8">
+    <title>Polytopy - Advanced Computer Vision & SLAM Solutions</title>
+    <meta name="author" content="Polytopy">
+    <meta name="description" content="Polytopy delivers cutting-edge computer vision, perception, and SLAM technologies for autonomous systems and robotics applications.">
+    <meta name="keywords"  content="Computer Vision,Perception,SLAM,AI,ML,Robotics,Sensor Fusion,Software">
+    <meta name="language" content="English">
+    <meta name="resource-type" content="Document">
+    <meta name="theme-color" content="#FFFFFF">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="./theme/images/icons/favicon.ico">
+    <link rel="icon" sizes="16x16 32x32 48x48 64x64 128x128" href="./theme/images/icons/favicon.ico">
+    <link rel="icon" type="image/png" sizes="192x192" href="./theme/images/icons/favicon-192.png">
+    <link rel="icon" type="image/png" sizes="160x160" href="./theme/images/icons/favicon-160.png">
+    <link rel="icon" type="image/png" sizes="128x128" href="./theme/images/icons/favicon-128.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="./theme/images/icons/favicon-96.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="./theme/images/icons/favicon-64.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="./theme/images/icons/favicon-48.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./theme/images/icons/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./theme/images/icons/favicon-16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./theme/images/icons/favicon-180.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="./theme/images/icons/favicon-152.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="./theme/images/icons/favicon-144.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="./theme/images/icons/favicon-120.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./theme/images/icons/favicon-114.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="./theme/images/icons/favicon-76.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./theme/images/icons/favicon-72.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="./theme/images/icons/favicon-60.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="./theme/images/icons/favicon-57.png">
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    <meta name="msapplication-TileImage" content="./theme/images/icons/favicon-144.png">
+    <meta name="msapplication-config" content="./theme/images/icons/browserconfig.xml">
+    <link rel="stylesheet" href="./theme/styles/colours.css">
+    <link rel="stylesheet" href="./theme/styles/header.css">
+    <link rel="stylesheet" href="./theme/styles/robot.css">
+    <link rel="stylesheet" href="./theme/styles/buttons.css">
+    <link rel="stylesheet" href="./theme/styles/about.css">
+    <link rel="stylesheet" href="./theme/styles/services.css">
+    <link rel="stylesheet" href="./theme/styles/technologies.css">
+    <link rel="stylesheet" href="./theme/styles/contact.css">
+    <link rel="stylesheet" href="./theme/styles/footer.css">
+    <link rel="stylesheet" href="./theme/styles/main.css">
+</head>
+<body>
+    <header id="header">
+        <nav class="container">
+            <a href="#" class="logo"><div class="logo-icon"></div>Polytopy</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#technology">Technology</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                        <span class="sun-icon">☀️</span>
+                        <span class="moon-icon">🌙</span>
+                    </button>
+                </li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+    <section class="about" id="about">
+        <div class="container">
+            <canvas id="robots"></canvas>
+            <div class="about-content">
+                <h1>Advanced Computer Vision, Robotics, <abbr title="Artificial Intelligence">AI</abbr>&nbsp;/&nbsp;<abbr title="Machine Learning">ML</abbr> & <abbr title="Simultaneous Localisation And Mapping">SLAM</abbr> Solutions</h1>
+                <p class="about-subtitle">
+                    Empowering autonomous systems with cutting-edge perception technologies.<br/>
+                    From real-time mapping to intelligent scene understanding, we deliver the vision that drives tomorrow's robots.
+                </p>
+                <div class="container-buttons">
+                    <a href="#services" class="button button-dark">Explore Solutions</a>
+                    <a href="#contact" class="button button-dark">Get In Touch</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Our Solutions</h2>
+            <p class="section-subtitle">
+                We specialise in developing robust computer vision and <abbr title="Simultaneous Localisation And Mapping">SLAM</abbr> technologies that enable machines to perceive, understand, and navigate the world with precision.
+            </p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon"><img src="./theme/images/services/computer-vision.svg" alt="Computer Vision"/></div>
+                        <h3>Computer Vision</h3>
+                    </div>
+                    <p>Real-time simultaneous localisation and mapping using advanced visual odometry algorithms. Our <abbr title="Simultaneous Localisation And Mapping">SLAM</abbr> solutions provide accurate pose estimation and dense 3D reconstruction for autonomous navigation.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon"><img src="./theme/images/services/robotics.svg" alt="Robotics"/></div>
+                        <h3>Robotics</h3>
+                    </div>
+                    <p>End-to-end robotic solutions from perception to motion planning. We develop robust control systems and navigation stacks that enable autonomous operation in dynamic environments, combining our expertise in <abbr title="Simultaneous Localisation And Mapping">SLAM</abbr>, path planning, and real-time systems.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon"><img src="./theme/images/services/ai-ml.svg" alt="Artificial Intelligence / Machine Learning"/></div>
+                        <h3><abbr title="Artificial Intelligence">AI</abbr>&nbsp;/&nbsp;<abbr title="Machine Learning">ML</abbr></h3>
+                    </div>
+                    <p>State-of-the-art object detection, tracking, and scene understanding. We develop custom vision algorithms optimised for robotics, automotive, and industrial applications.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon"><img src="./theme/images/services/integration.svg" alt="Sensor Integration"/></div>
+                        <h3>Sensor Integration</h3>
+                    </div>
+                    <p>Multi-sensor fusion and intelligent perception pipelines that combine camera, LiDAR, Radar, IMU, and GNSS data for robust environmental understanding in challenging conditions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="technology" class="tech-stack">
+        <div class="container">
+            <h2 class="section-title">Technology Stack</h2>
+            <p class="section-subtitle">
+                Fully bespoke or built on standardised frameworks, the choice of technology is at the core of our offerings. Leveraging cutting-edge hardware and research to deliver the best solutions for your needs.
+            </p>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <h4>Dependency Free</h4>
+                    <p><abbr title="Simultaneous Localisation And Mapping">SLAM</abbr> with <strong>zero</strong> dependencies</p>
+                </div>
+                <div class="tech-item">
+                    <h4>OpenCV</h4>
+                    <p>Standardised Computer Vision</p>
+                </div>
+                <div class="tech-item">
+                    <h4><abbr title="Robotic Operating System">ROS</abbr>2</h4>
+                    <p>Stanardised Robotics Framework</p>
+                </div>
+                <div class="tech-item">
+                    <h4><abbr title="Compute Unified Device Architecture">CUDA</abbr></h4>
+                    <p>Efficient <abbr title="Graphics Processing Unit">GPU</abbr> Computing</p>
+                </div>
+                <div class="tech-item">
+                    <h4><abbr title="Point Cloud Library">PCL</abbr></h4>
+                    <p>Point Cloud Processing</p>
+                </div>
+                <div class="tech-item">
+                    <h4>PyTorch</h4>
+                    <p>Deep Learning</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Passive Sensors</h4>
+                    <p>Cameras, <abbr title="Inertial Measurement Unit">IMU</abbr>s, <abbr title="Global Navigation Satellite System">GNSS</abbr>, and more!</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Active Sensors</h4>
+                    <p><abbr title="Light Detection And Ranging">LiDAR</abbr>, <abbr title="Radio Detection And Ranging">Radar</abbr>, <abbr title="Time of Flight">ToF</abbr>, and more!</p>
+                </div>
+                <div class="tech-item">
+                    <h4><abbr title="Augmented Reality">AR</abbr> / <abbr title="Virtual Reality">VR</abbr></h4>
+                    <p>Custom Solutions and Integrations</p>
+                </div>
+                <div class="tech-item">
+                    <h4>COLMAP</h4>
+                    <p>Custom Photogrammetry</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Localisation</h4>
+                    <p>From Real-time <abbr title="Simultaneous Localisation And Mapping">SLAM</abbr>, to City Scale <abbr title="High Definition">HD</abbr> Mapping</p>
+                </div>
+                <div class="tech-item">
+                    <h4>Dense Mapping</h4>
+                    <p><abbr title="Neural Radiance Fields">NeRF</abbr>s and Gaussian Splatting for Digital Twins</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">
+                Ready to bring advanced perception to your project? Let's discuss how Polytopy can accelerate your computer vision development.
+            </p>
+            <div class="form-status" id="formStatus"></div>
+            <form class="contact-form" id="contactForm" method="POST" action="https://script.google.com/macros/s/AKfycbz7AX6eSDVUN-kNjxJlrtRBVbmm76EOu4RBBk6Xegc79W6gWo4wwYMWdjB3LgFSA3yY/exec">
+                <div class="form-group">
+                    <label for="Name">Name</label>
+                    <input type="text" id="Name" name="Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="Email">Email</label>
+                    <input type="email" id="Email" name="Email" required>
+                </div>
+                <div class="form-group">
+                    <label for="Company">Company</label>
+                    <input type="text" id="Company" name="Company">
+                </div>
+                <div class="form-group">
+                    <label for="Message">Project Details</label>
+                    <textarea id="Message" name="Message" placeholder="Tell us about your computer vision or SLAM requirements..." required></textarea>
+                </div>
+                <button type="submit" class="button button-light">Send Message</button>
+            </form>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Polytopy</h4>
+                    <p>Advanced computer vision and SLAM solutions for autonomous systems. Transforming how machines perceive and navigate the world.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <p><a href="#services">Visual SLAM</a></p>
+                    <p><a href="#services">Computer Vision</a></p>
+                    <p><a href="#services">Perception Systems</a></p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p><a href="mailto:hello@polytopy.com">hello@polytopy.com</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Polytopy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <link rel="shortcut icon" href="./theme/images/icons/favicon.ico">
-        <link rel="icon" sizes="16x16 32x32 64x64" href="./theme/images/icons/favicon.ico">
-        <link rel="icon" type="image/png" sizes="192x192" href="./theme/images/icons/favicon-192.png">
-        <link rel="icon" type="image/png" sizes="160x160" href="./theme/images/icons/favicon-160.png">
-        <link rel="icon" type="image/png" sizes="96x96" href="./theme/images/icons/favicon-96.png">
-        <link rel="icon" type="image/png" sizes="64x64" href="./theme/images/icons/favicon-64.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="./theme/images/icons/favicon-32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="./theme/images/icons/favicon-16.png">
-        <link rel="apple-touch-icon" href="./theme/images/icons/favicon-57.png">
-        <link rel="apple-touch-icon" sizes="114x114" href="./theme/images/icons/favicon-114.png">
-        <link rel="apple-touch-icon" sizes="72x72" href="./theme/images/icons/favicon-72.png">
-        <link rel="apple-touch-icon" sizes="144x144" href="./theme/images/icons/favicon-144.png">
-        <link rel="apple-touch-icon" sizes="60x60" href="./theme/images/icons/favicon-60.png">
-        <link rel="apple-touch-icon" sizes="120x120" href="./theme/images/icons/favicon-120.png">
-        <link rel="apple-touch-icon" sizes="76x76" href="./theme/images/icons/favicon-76.png">
-        <link rel="apple-touch-icon" sizes="152x152" href="./theme/images/icons/favicon-152.png">
-        <link rel="apple-touch-icon" sizes="180x180" href="./theme/images/icons/favicon-180.png">
-        <meta name="msapplication-TileColor" content="#FFFFFF">
-        <meta name="msapplication-TileImage" content="./theme/images/icons/favicon-144.png">
-        <meta name="msapplication-config" content="./theme/images/icons/browserconfig.xml">
-    </head>
-    
-    <body style="width:100%; height:100%; font-family:verdana, arial, sans-serif; margin: 0;">
-        <header style="width: 100%; text-align:center;">
-            <img style="display: inline-block; vertical-align: middle; width: 50%; min-width: 400px; margin-top: 10%;" src="./theme/images/logo/logo-white.svg" alt="Polytopy"/>
-        </header>
-        
-        <main style="width: 100%; text-align:center;">           
-            <article>
-                <details>
-                    <summary>
-                        <header>
-                            <h3>Contact</h3>
-                        </header>
-                    </summary>
-                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfAVnNVKxv82Ne-dGSAt3RRPMragiS71f77l8muWkgUz7f3BA/viewform?embedded=true" width="100%" height="720px;" frameborder="0" marginheight="0" marginwidth="0" scrolling="no">Loading…</iframe>
-                </details>
-            </article>
-        </main>
-        
-        <footer style="width: 100%; text-align:center; ">
-            <small>&copy; Copyright <span id="copyright_date">2022</span> Polytopy. All Rights Reserved.</small>
-            <script type="text/javascript">document.getElementById('copyright_date').innerHTML = new Date().getFullYear();</script>
-        </footer>
-    </body>
+    <script src="./theme/scripts/main.js"></script>
+    <script src="./theme/scripts/robots.js"></script>
+</body>
 </html>

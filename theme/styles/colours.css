@@ -1,0 +1,23 @@
+:root {
+    --white: #f0f0f0;
+    --red: #ea4335;
+    --green: #34a853;
+    --blue: #4285f4;
+    --yellow: #fbbc05;
+    --black: #101010;
+    --gray-light: #e0e1e2;
+    --gray-medium: #5f6368;
+    --gray-dark: #202124;
+}
+
+[data-theme="dark"] {
+    --white: #101010;
+    --red: #ea4335;
+    --green: #34a853;
+    --blue: #4285f4;
+    --yellow: #fbbc05;
+    --black: #f0f0f0;
+    --gray-light: #202124;
+    --gray-medium: #b0b0b0;
+    --gray-dark: #e0e1e2;
+}
