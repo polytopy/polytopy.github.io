@@ -38,6 +38,14 @@
     margin: 0 auto;
     display: grid;
     gap: 1.5rem;
+    transition: opacity 0.2s ease;
+}
+
+/* Held shut for a moment after a send, so the result registers before the
+   form can be typed over again. */
+.contact-form.is-busy {
+    opacity: 0.55;
+    pointer-events: none;
 }
 
 .form-status {

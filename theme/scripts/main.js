@@ -49,11 +49,52 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// If captcha.js is missing or its mount point is gone, fall back to a stub
+// that waves everything through rather than taking the whole form down with it.
+const captcha = (window.Captcha && window.Captcha.attach('#captchaMount')) || {
+    tooFast: function () { return false; },
+    check: function () { return true; },
+    fail: function () {},
+    reset: function () {},
+    nonce: function () { return ''; },
+    response: function () { return ''; }
+};
+
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+// The status sits above the form, so after a send from the bottom of a long
+// form it is off screen. Centre it rather than aligning to the top: the header
+// is fixed, and would cover it.
+function showStatus(kind, text) {
+    const formStatus = document.getElementById('formStatus');
+    formStatus.className = `form-status ${kind}`;
+    formStatus.textContent = text;
+    formStatus.style.display = 'block';
+    formStatus.scrollIntoView({
+        behavior: reducedMotion.matches ? 'auto' : 'smooth',
+        block: 'center'
+    });
+}
+
+// #captchaAnswer is left alone: the captcha widget disables it while it is
+// fetching the next challenge and re-enables it when one arrives, which can be
+// after this does. Two owners for one disabled flag would fight.
+function setBusy(form, busy) {
+    form.classList.toggle('is-busy', busy);
+    form.setAttribute('aria-busy', busy ? 'true' : 'false');
+    Array.prototype.forEach.call(form.elements, function (control) {
+        if (control.id !== 'captchaAnswer') {
+            control.disabled = busy;
+        }
+    });
+}
+
 document.getElementById('contactForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    
+
     const formStatus = document.getElementById('formStatus');
-    
+    const form = this;
+
     // Get form data
     const action = e.target.action
     const formData = new FormData(this);
@@ -64,51 +105,75 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
 
     // Simple validation
     if (!name || !email || !message) {
-        formStatus.className = `form-status error`;
-        formStatus.textContent = 'Please fill in all required fields.';
-        formStatus.style.display = 'block';
+        showStatus('error', 'Please fill in all required fields.');
         return;
     }
 
-    // Show loading state
-    formStatus.className = `form-status sending`;
-    formStatus.textContent = 'Sending your message...';
-    formStatus.style.display = 'block';
-    
+    if (captcha.tooFast() || !captcha.check()) {
+        showStatus('error', 'The human check did not pass, please try the new one.');
+        captcha.fail();
+        return;
+    }
+
+    document.getElementById('captchaNonce').value = captcha.nonce();
+    document.getElementById('captchaResponse').value = captcha.response();
+
+    // Rebuilt so it picks up the hidden fields just filled in. The honeypot
+    // goes with it on purpose: the backend is the one that should see it.
+    const payload = new FormData(this);
+
+    showStatus('sending', 'Sending your message...');
+
     const submitBtn = this.querySelector('button[type="submit"]');
     const originalText = submitBtn.textContent;
     submitBtn.textContent = 'Sending...';
-    submitBtn.disabled = true;
+    setBusy(form, true);
+
+    // Holds the form shut for a moment after the answer lands, so the result
+    // is read rather than typed straight over.
+    function settle() {
+        submitBtn.textContent = originalText;
+        window.setTimeout(function () {
+            setBusy(form, false);
+        }, 1000);
+    }
 
     fetch(action, {
       method: 'POST',
-      body: formData,
+      body: payload,
     })
     .then(function (a) {
         return a.json();
     })
     .then(function (json) {
         console.log(json)
-        
-        const formStatus = document.getElementById('formStatus');
+
         if (json["result"] === "success") {
-            formStatus.className = `form-status success`;
-            formStatus.textContent = 'Thank you for your message! We\'ll get back to you soon.';
-            formStatus.style.display = 'block';
-            document.getElementById('contactForm').reset();
+            showStatus('success', 'Thank you for your message! We\'ll get back to you soon.');
+            form.reset();
+            captcha.reset();
+        }
+        else if (json["result"] === "challenge") {
+            showStatus('error', 'The human check did not pass, please try the new one.');
+            captcha.fail(json["error"]);
         }
         else {
-            formStatus.className = `form-status error`;
-            formStatus.textContent = 'There was an error sending your message, please try emailing instead.';
-            formStatus.style.display = 'block';
+            showStatus('error', json["error"] || 'There was an error sending your message, please try emailing instead.');
+            captcha.reset();
         }
-        
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
-        
+
+        settle();
+
         // Hide success message after 5 seconds
         setTimeout(() => {
             formStatus.style.display = 'none';
         }, 5000);
+    })
+    .catch(function (error) {
+        console.log(error)
+
+        showStatus('error', 'There was an error sending your message, please try emailing instead.');
+        settle();
+        captcha.reset();
     })
 });

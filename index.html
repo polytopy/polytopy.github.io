@@ -40,6 +40,7 @@
     <link rel="stylesheet" href="./theme/styles/services.css">
     <link rel="stylesheet" href="./theme/styles/technologies.css">
     <link rel="stylesheet" href="./theme/styles/contact.css">
+    <link rel="stylesheet" href="./theme/styles/captcha.css">
     <link rel="stylesheet" href="./theme/styles/footer.css">
     <link rel="stylesheet" href="./theme/styles/main.css">
 </head>
@@ -185,7 +186,7 @@
                 Ready to bring advanced perception to your project? Let's discuss how Polytopy can accelerate your computer vision development.
             </p>
             <div class="form-status" id="formStatus"></div>
-            <form class="contact-form" id="contactForm" method="POST" action="https://script.google.com/macros/s/AKfycbz7AX6eSDVUN-kNjxJlrtRBVbmm76EOu4RBBk6Xegc79W6gWo4wwYMWdjB3LgFSA3yY/exec">
+            <form class="contact-form" id="contactForm" method="POST" action="https://script.google.com/macros/s/AKfycbxableFQItBQk1BlM7__hFmQpfs49DCQ75R54JEohGXSv3AMW-0WbBhM1fN6PyzfyXi/exec">
                 <div class="form-group">
                     <label for="Name">Name</label>
                     <input type="text" id="Name" name="Name" required>
@@ -202,6 +203,9 @@
                     <label for="Message">Project Details</label>
                     <textarea id="Message" name="Message" placeholder="Tell us about your computer vision or SLAM requirements..." required></textarea>
                 </div>
+                <div class="form-group" id="captchaMount"></div>
+                <input type="hidden" name="captchaNonce" id="captchaNonce">
+                <input type="hidden" name="captchaResponse" id="captchaResponse">
                 <button type="submit" class="button button-light">Send Message</button>
             </form>
         </div>
@@ -230,6 +234,7 @@
         </div>
     </footer>
 
+    <script src="./theme/scripts/captcha.js"></script>
     <script src="./theme/scripts/main.js"></script>
     <script src="./theme/scripts/robots.js"></script>
 </body>
